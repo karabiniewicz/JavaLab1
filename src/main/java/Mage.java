@@ -6,6 +6,8 @@ public class Mage {
     private double power;
     private Set<Mage> apprentices;
 
+    static int deep = 1;
+
     public Mage(String name, int level, double power, Set<Mage> apprentices) {
         this.name = name;
         this.level = level;
@@ -13,15 +15,26 @@ public class Mage {
         this.apprentices = apprentices;
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public String toString() {
+        return "Mage{" +
+                "name='" + name + '\'' +
+                ", level=" + level +
+                ", power=" + power +
+                '}';
     }
 
-    public int getLevel() {
-        return level;
-    }
+    public void write() {
+        for (int i = 0; i < deep; i++) {
+            System.out.print('-');
+        }
+        System.out.println(this.toString());
 
-    public double getPower() {
-        return power;
+        deep++;
+        for (Mage apprentice : this.apprentices) {
+            apprentice.write();
+        }
+        deep--;
+
     }
 }
