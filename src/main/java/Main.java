@@ -1,5 +1,4 @@
 import java.util.TreeSet;
-import java.util.TreeSet;
 import java.util.Set;
 
 public class Main {
@@ -33,9 +32,7 @@ public class Main {
 
         Mage mage1 = new Mage("Mark", 3, 12.4, mages2_4);
 
-        //System.out.println(mage1.equals(mage15));
         mage1.write();
-
 
     }
 }
