@@ -9,6 +9,18 @@ public class Mage implements Comparable<Mage> {
 
     static int deep = 1;
 
+    public String getName() {
+        return name;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public double getPower() {
+        return power;
+    }
+
     public Mage(String name, int level, double power, Set<Mage> apprentices) {
         this.name = name;
         this.level = level;
