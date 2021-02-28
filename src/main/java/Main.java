@@ -1,6 +1,4 @@
-import java.util.HashSet;
-import java.util.TreeSet;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     private static final Mage[] mages = new Mage[11];
@@ -11,31 +9,41 @@ public class Main {
 
     public static void main(String[] args) {
 //        String sortingState = args[0];
-        String sortingState = NATURAL_SORTING;
+        String sortingState = NO_SORTING;
+        Map<Mage,Integer> map;
 
-        creatTestData(sortingState);
-
-        mages[0].write();
-    }
-
-    private static void creatTestData(String sortingState) {
         switch (sortingState) {
             case NATURAL_SORTING:
+                map = new TreeMap<>();
                 for (int i = 0; i < sets.length; ++i) {
                     sets[i] = new TreeSet<>();
                 }
                 break;
             case ALTERNATIVE_SORTING:
+                map = new TreeMap<>(new MageComparator());
                 for (int i = 0; i < sets.length; ++i) {
                     sets[i] = new TreeSet<>(new MageComparator());
                 }
                 break;
             default:
+                map = new HashMap<>();
                 for (int i = 0; i < sets.length; ++i) {
                     sets[i] = new HashSet<>();
                 }
         }
 
+        creatTestData();
+
+        mages[0].write(map);
+
+        System.out.println("--------------------");
+
+        for (Object k : map.keySet()) {
+            System.out.println(k + " " + map.get(k));
+        }
+    }
+
+    private static void creatTestData() {
         mages[1] = new Mage("Clark", 3, 12.4, sets[0]);
         mages[2] = new Mage("Zizu", 3, 12.4, sets[1]);
         mages[4] = new Mage("Ten", 3, 12.4, sets[2]);

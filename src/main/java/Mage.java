@@ -1,3 +1,4 @@
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -6,6 +7,7 @@ public class Mage implements Comparable<Mage> {
     private int level;
     private double power;
     private Set<Mage> apprentices;
+    private int descendantsAmount = 0;
 
     static int deep = 1;
 
@@ -17,6 +19,10 @@ public class Mage implements Comparable<Mage> {
         return level;
     }
 
+    public int getDescendantsAmount() {
+        return descendantsAmount;
+    }
+
     public double getPower() {
         return power;
     }
@@ -26,7 +32,6 @@ public class Mage implements Comparable<Mage> {
         this.level = level;
         this.power = power;
         this.apprentices = apprentices;
-
     }
 
     @Override
@@ -79,18 +84,22 @@ public class Mage implements Comparable<Mage> {
         return result;
     }
 
-    public void write() {
+    public void write(Map<Mage, Integer> map) {
         for (int i = 0; i < deep; i++) {
             System.out.print('-');
         }
         System.out.println(this.toString());
 
+        descendantsAmount = this.apprentices.size();
+
         deep++;
         for (Mage apprentice : this.apprentices) {
-            apprentice.write();
+            apprentice.write(map);
+            descendantsAmount += apprentice.getDescendantsAmount();
         }
         deep--;
 
+        map.put(this, descendantsAmount);
     }
 
     @Override
