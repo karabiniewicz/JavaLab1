@@ -1,3 +1,5 @@
+package s180009.Lab1;
+
 import java.util.Comparator;
 
 public class MageComparator implements Comparator<Mage> {

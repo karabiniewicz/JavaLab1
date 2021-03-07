@@ -1,3 +1,5 @@
+package s180009.Lab1;
+
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;

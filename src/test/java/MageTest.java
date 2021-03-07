@@ -1,5 +1,5 @@
 import org.junit.Test;
-
+import s180009.Lab1.Mage;
 import java.util.TreeSet;
 import java.util.Set;
 
