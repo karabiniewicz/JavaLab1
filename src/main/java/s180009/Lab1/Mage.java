@@ -1,8 +1,6 @@
 package s180009.Lab1;
 
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Mage implements Comparable<Mage> {
     private String name;
@@ -86,20 +84,50 @@ public class Mage implements Comparable<Mage> {
         return result;
     }
 
-    public void write(Map<Mage, Integer> map) {
+//    public void write(Map<Mage, Integer> map) {
+//        for (int i = 0; i < deep; i++) {
+//            System.out.print('-');
+//        }
+//        System.out.println(this.toString());
+//
+//        descendantsAmount = this.apprentices.size();
+//
+//        deep++;
+//        for (Mage apprentice : this.apprentices) {
+//            apprentice.write(map);
+//            descendantsAmount += apprentice.getDescendantsAmount();
+//        }
+//        deep--;
+//
+//        map.put(this, descendantsAmount);
+//    }
+
+    public void writeAllMages() {
         for (int i = 0; i < deep; i++) {
             System.out.print('-');
         }
         System.out.println(this.toString());
 
-        descendantsAmount = this.apprentices.size();
-
         deep++;
         for (Mage apprentice : this.apprentices) {
-            apprentice.write(map);
-            descendantsAmount += apprentice.getDescendantsAmount();
+            apprentice.writeAllMages();
         }
         deep--;
+    }
+
+    public Map<Mage, Integer> createDescendantsAmountStatistics(Map<Mage, Integer> map) {
+        this.generateDescendantsAmountStatistics(map);
+
+        return map;
+    }
+
+    private void generateDescendantsAmountStatistics(Map<Mage, Integer> map) {
+        descendantsAmount = this.apprentices.size();
+
+        for (Mage apprentice : this.apprentices) {
+            apprentice.generateDescendantsAmountStatistics(map);
+            descendantsAmount += apprentice.getDescendantsAmount();
+        }
 
         map.put(this, descendantsAmount);
     }

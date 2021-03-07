@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         String sortingState = args[0];
-        Map<Mage,Integer> map;
+        Map<Mage, Integer> map;
 
         switch (sortingState) {
             case NATURAL_SORTING:
@@ -36,7 +36,9 @@ public class Main {
 
         creatTestData();
 
-        mages[0].write(map);
+        //mages[0].write(map);
+        mages[0].writeAllMages();
+        map = mages[0].createDescendantsAmountStatistics(map);
 
         System.out.println("--------------------");
 
@@ -46,14 +48,14 @@ public class Main {
     }
 
     private static void creatTestData() {
-        mages[1] = new Mage("Clark",3, 152.4, sets[0]);
-        mages[2] = new Mage("Zizu",5, 1.24, sets[1]);
-        mages[4] = new Mage("Ten",2, 12.64, sets[2]);
-        mages[5] = new Mage("Zack",67, 112.4, sets[3]);
-        mages[7] = new Mage("Adam",7, 61.4, sets[4]);
-        mages[8] = new Mage("Michael",9, 11.0, sets[5]);
-        mages[9] = new Mage("Frank",4, 15.4, sets[6]);
-        mages[10] = new Mage("Antony",4, 13.4, sets[7]);
+        mages[1] = new Mage("Clark", 3, 152.4, sets[0]);
+        mages[2] = new Mage("Zizu", 5, 1.24, sets[1]);
+        mages[4] = new Mage("Ten", 2, 12.64, sets[2]);
+        mages[5] = new Mage("Zack", 67, 112.4, sets[3]);
+        mages[7] = new Mage("Adam", 7, 61.4, sets[4]);
+        mages[8] = new Mage("Michael", 9, 11.0, sets[5]);
+        mages[9] = new Mage("Frank", 4, 15.4, sets[6]);
+        mages[10] = new Mage("Antony", 4, 13.4, sets[7]);
 
         Set<Mage> mages9_11 = sets[8];
         mages9_11.add(mages[8]);
